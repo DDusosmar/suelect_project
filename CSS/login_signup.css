@@ -1,0 +1,247 @@
+:root {
+    --primary-color: #c61a1a;
+    --secondary-color: #cc2e2e;
+    --background-light: #f4f6f7;
+    --text-dark: #502c2c;
+    --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --light-text-color: #9b9b9b;
+    --white: #fff;
+    --success-color: #00c853;
+    --border-color: #e6e6e6;
+    --backbtn: #850909;
+}
+
+.bebas-neue-regular {
+    font-family: "Bebas Neue", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-light);
+    display: flex;
+    min-height: 100vh;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    box-shadow: var(--card-shadow);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.left {
+    width: 50%;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--white);
+}
+
+.right {
+    width: 50%;
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Keep the original image implementation */
+.right::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+}
+
+/* Login page specific */
+.login .right::before {
+    background: url('../Images/signup.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+/* Signup page specific */
+.signup .right::before {
+    background: url('../Images/background.jpg') no-repeat center center;
+    background-size: cover;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.header a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.header a:hover {
+    text-decoration: underline;
+}
+
+.form-container h1 {
+    font-size: 50px;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-family: "Bebas Neue", sans-serif;
+    color: var(--text-dark);
+}
+
+.form-container p {
+    color: var(--light-text-color);
+    margin-bottom: 1.5rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.25rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 3rem 1rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: var(--white); /* Ensure input background is white */
+}
+
+.form-group i {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--light-text-color);
+}
+
+.form-group i.fa-check-circle {
+    color: var(--success-color);
+}
+
+.form-group i.fa-eye {
+    cursor: pointer;
+}
+
+.password-requirements {
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    margin-top: 0.5rem;
+}
+
+.password-requirements .valid {
+    color: var(--success-color);
+}
+
+.signup-button, .signin-button, .back-button{
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 1rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.signup-button:hover, .signin-button:hover {
+    background-color: var(--primary-color);
+}
+
+.back-button{
+    background-color: var(--backbtn);
+}
+
+.back-button:hover{
+    background-color: var(--backbtn);
+}
+
+.social-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+
+.social-login span {
+    margin: 0 1rem;
+    color: var(--light-text-color);
+}
+
+.social-login i {
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    cursor: pointer;
+}
+
+.step {
+    display: block;
+    transition: all 0.3s ease;
+}
+.step.hidden {
+    display: none;
+}
+.error-message {
+    color: red;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+.success-message {
+    color: green;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+    .left, .right {
+        width: 100%;
+    }
+    .right {
+        display: none;
+    }
+}
+
+@media (max-width: 400px) {
+    .left {
+        padding: 20px;
+    }
+
+    .form-container h1 {
+        font-size: 40px;
+    }
+
+    .form-group input {
+        padding: 0.8rem 2.5rem 0.8rem 0.8rem;
+        font-size: 0.8rem;
+    }
+
+    .form-container p {
+        font-size: 0.8rem;
+    }
+}
