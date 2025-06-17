@@ -1,299 +1,103 @@
-  :root {
-            --primary-color: #c61a1a;
-            --secondary-color: #cc2e2e;
-            --background-light: #f4f6f7;
-            --text-dark: #502c2c;
-            --text-light: #777;
-            --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            --sidebar-width: 260px;
-            --header-height: 70px;
-            --transition-speed: 0.3s;
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background-light);
-            color: var(--text-dark);
-            display: flex;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-        
-        /* Sidebar Styles */
-        .sidebar {
-            width: var(--sidebar-width);
-            background: white;
-            height: 100vh;
-            position: fixed;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
-            transition: transform var(--transition-speed) ease;
-            z-index: 100;
-            left: 0;
-            top: 0;
-        }
-        
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0,0,0,0.5);
-            z-index: 99;
-            display: none;
-            opacity: 0;
-            transition: opacity var(--transition-speed) ease;
-        }
-        
-        .sidebar-header {
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            padding: 0 20px;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .logo {
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary-color);
-            border-radius: 6px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: bold;
-        }
-        
-        .logo-text {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-        }
-        
-        .logo-text span {
-            color: var(--primary-color);
-        }
-        
-        .sidebar-menu {
-            padding: 20px 0;
-            height: calc(100vh - var(--header-height));
-            overflow-y: auto;
-        }
-        
-        .menu-item {
-            display: flex;
-            align-items: center;
-            padding: 12px 20px;
-            color: var(--text-dark);
-            text-decoration: none;
-            transition: all 0.2s;
-            font-size: 0.95rem;
-        }
-        
-        .menu-item:hover {
-            background-color: rgba(198, 26, 26, 0.1);
-            color: var(--primary-color);
-        }
-        
-        .menu-item.active {
-            background-color: rgba(198, 26, 26, 0.1);
-            color: var(--primary-color);
-            border-left: 4px solid var(--primary-color);
-        }
-        
-        .menu-item i {
-            margin-right: 12px;
-            font-size: 1rem;
-            width: 20px;
-            text-align: center;
-        }
-        
-        /* Main Content Styles */
-        .main-content {
-            flex: 1;
-            margin-left: var(--sidebar-width);
-            transition: var(--transition-speed);
-            min-height: 100vh;
-        }
-
-        .logo-container {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+/* Main Dashboard Styles */
+:root {
+    --primary-color: #c61a1a;
+    --secondary-color: #cc2e2e;
+    --background-light: #f4f6f7;
+    --text-dark: #502c2c;
+    --text-light: #777;
+    --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --sidebar-width: 260px;
+    --header-height: 70px;
+    --transition-speed: 0.3s;
 }
 
-.logo {
-    width: 200px;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    background: white;
+.content-wrapper {
+    padding: 20px;
 }
 
-.logo img {
-    width: 70%;
-    height: 100%;
-    background: white;
-    object-fit: contain;
-}
-
-.logo-text {
-    font-family: 'Bebas Neue', sans-serif;
+.page-title {
     font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+    font-family: 'Bebas Neue', sans-serif;
     letter-spacing: 1px;
 }
 
+/* Welcome Card */
+.welcome-card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 20px;
+}
 
-        
-        .header {
-            height: var(--header-height);
-            background: white;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
-            box-shadow: var(--card-shadow);
-            position: sticky;
-            top: 0;
-            z-index: 10;
-        }
-        
-        .header-left {
-            display: flex;
-            align-items: center;
-        }
-        
-        .header-right {
-            display: flex;
-            align-items: center;
-        }
-        
-        .user-profile {
-            display: flex;
-            align-items: center;
-        }
-        
-        .user-profile img {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            margin-right: 10px;
-            object-fit: cover;
-        }
-        
-        .user-info h4 {
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-        
-        .user-info p {
-            font-size: 0.75rem;
-            color: var(--text-light);
-        }
-        
-        /* Dashboard Content */
-        .content-wrapper {
-            padding: 20px;
-        }
-        
-        .page-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: var(--primary-color);
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 1px;
-        }
-        
-        .welcome-card {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: var(--card-shadow);
-            margin-bottom: 20px;
-        }
-        
-        .welcome-title {
-            font-size: 1.3rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-            color: var(--primary-color);
-        }
-        
-        .admin-name {
-            font-size: 1.1rem;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        
-        .admin-info {
-            color: var(--text-light);
-            line-height: 1.5;
-            font-size: 0.9rem;
-        }
-        
-        /* Stats Cards */
+.welcome-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.admin-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+.admin-info {
+    color: var(--text-light);
+    line-height: 1.5;
+    font-size: 0.9rem;
+}
+
+/* Stats Cards */
 .stats-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 15px;
-            margin-bottom: 20px;
-            margin-left: auto;
-            margin-right: auto;
-            max-width: 1200px;
-        }
-        
-        .stat-card {
-            background: white;
-            border-radius: 8px;
-            padding: 15px;
-            box-shadow: var(--card-shadow);
-            display: flex;
-            align-items: center;
-        }
-        
-        .stat-icon {
-            width: 50px;
-            height: 50px;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 12px;
-            color: white;
-            background-color: var(--primary-color);
-            font-size: 1.3rem;
-        }
-        
-        .stat-info h3 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 3px;
-        }
-        
-        .stat-info p {
-            color: var(--text-light);
-            font-size: 0.8rem;
-        }
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 15px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1200px;
+}
 
+.stat-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: var(--card-shadow);
+    display: flex;
+    align-items: center;
+}
 
-        /* Login Attempts Table Styles */
+.stat-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    color: white;
+    background-color: var(--primary-color);
+    font-size: 1.3rem;
+}
+
+.stat-info h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 3px;
+}
+
+.stat-info p {
+    color: var(--text-light);
+    font-size: 0.8rem;
+}
+
+/* Login Attempts Section */
 .login-attempts-section {
     background: white;
     border-radius: 8px;
@@ -311,6 +115,7 @@
     letter-spacing: 1px;
 }
 
+/* Login Attempts Table */
 .login-attempts-table {
     width: 100%;
     border-collapse: collapse;
@@ -351,7 +156,7 @@
     border-bottom: none;
 }
 
-/* Status badges */
+/* Status Badges */
 .status-badge {
     display: inline-block;
     padding: 4px 8px;
@@ -372,7 +177,7 @@
     color: #721c24;
 }
 
-/* Username styling */
+/* Table Cell Styling */
 .username-cell {
     font-family: 'Courier New', monospace;
     font-size: 0.8rem;
@@ -380,19 +185,17 @@
     font-weight: 500;
 }
 
-/* Date styling */
 .date-cell {
     color: var(--text-light);
     font-size: 0.85rem;
 }
 
-/* Admin name styling */
 .admin-name-cell {
     font-weight: 500;
     color: var(--text-dark);
 }
 
-/* Empty state */
+/* Empty State */
 .empty-state {
     text-align: center;
     padding: 40px 20px;
@@ -406,8 +209,12 @@
     opacity: 0.5;
 }
 
-/* Responsive table */
+/* Responsive Styles */
 @media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+    }
+    
     .login-attempts-table {
         font-size: 0.85rem;
     }
@@ -454,6 +261,14 @@
 }
 
 @media (max-width: 576px) {
+    .content-wrapper {
+        padding: 15px;
+    }
+    
+    .stats-container {
+        grid-template-columns: 1fr;
+    }
+    
     /* Stack table on small screens */
     .login-attempts-table,
     .login-attempts-table thead,
@@ -589,6 +404,37 @@
 }
 
 @media (max-width: 360px) {
+    .content-wrapper {
+        padding: 10px;
+    }
+    
+    .welcome-card, 
+    .stat-card {
+        padding: 12px;
+    }
+    
+    .stat-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1.1rem;
+    }
+    
+    .stat-info h3 {
+        font-size: 1.3rem;
+    }
+    
+    .page-title {
+        font-size: 1.3rem;
+    }
+    
+    .welcome-title {
+        font-size: 1.1rem;
+    }
+    
+    .admin-name {
+        font-size: 1rem;
+    }
+    
     .login-attempts-section {
         padding: 8px;
         margin-left: -2px;
@@ -697,91 +543,3 @@
         font-size: 1.5rem;
     }
 }
-        
-        /* Responsive Styles */
-        @media (max-width: 992px) {
-            .sidebar {
-                transform: translateX(-100%);
-            }
-            
-            .sidebar.active {
-                transform: translateX(0);
-            }
-            
-            .sidebar-overlay.active {
-                display: block;
-                opacity: 1;
-            }
-            
-            .main-content {
-                margin-left: 0;
-            }
-            
-            .menu-toggle {
-                display: block !important;
-            }
-        }
-        
-        @media (max-width: 576px) {
-            .content-wrapper {
-                padding: 15px;
-            }
-            
-            .stats-container {
-                grid-template-columns: 1fr;
-            }
-            
-            .header {
-                padding: 0 15px;
-            }
-            
-            .user-info {
-                display: none;
-            }
-            
-            .user-profile img {
-                margin-right: 0;
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .content-wrapper {
-                padding: 10px;
-            }
-            
-            .welcome-card, .stat-card {
-                padding: 12px;
-            }
-            
-            .stat-icon {
-                width: 40px;
-                height: 40px;
-                font-size: 1.1rem;
-            }
-            
-            .stat-info h3 {
-                font-size: 1.3rem;
-            }
-            
-            .page-title {
-                font-size: 1.3rem;
-            }
-            
-            .welcome-title {
-                font-size: 1.1rem;
-            }
-            
-            .admin-name {
-                font-size: 1rem;
-            }
-        }
-        
-        .menu-toggle {
-            display: none;
-            background: none;
-            border: none;
-            font-size: 1.3rem;
-            color: var(--primary-color);
-            cursor: pointer;
-            margin-right: 15px;
-        }

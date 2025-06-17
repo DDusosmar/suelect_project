@@ -1,0 +1,228 @@
+/* Sidebar and Header Styles */
+:root {
+    --primary-color: #c61a1a;
+    --secondary-color: #cc2e2e;
+    --background-light: #f4f6f7;
+    --text-dark: #502c2c;
+    --text-light: #777;
+    --card-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    --sidebar-width: 260px;
+    --header-height: 70px;
+    --transition-speed: 0.3s;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--background-light);
+    color: var(--text-dark);
+    display: flex;
+    min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
+}
+
+
+/* Main Content Layout */
+.main-content {
+    flex: 1;
+    margin-left: var(--sidebar-width);
+    transition: var(--transition-speed);
+    min-height: 100vh;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: var(--sidebar-width);
+    background: white;
+    height: 100vh;
+    position: fixed;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    transition: transform var(--transition-speed) ease;
+    z-index: 100;
+    left: 0;
+    top: 0;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 99;
+    display: none;
+    opacity: 0;
+    transition: opacity var(--transition-speed) ease;
+}
+
+.sidebar-header {
+    height: var(--header-height);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo {
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background: white;
+}
+
+.logo img {
+    width: 70%;
+    height: 100%;
+    background: white;
+    object-fit: contain;
+}
+
+.logo-text {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+}
+
+.logo-text span {
+    color: var(--primary-color);
+}
+
+.sidebar-menu {
+    padding: 20px 0;
+    height: calc(100vh - var(--header-height));
+    overflow-y: auto;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    color: var(--text-dark);
+    text-decoration: none;
+    transition: all 0.2s;
+    font-size: 0.95rem;
+}
+
+.menu-item:hover {
+    background-color: rgba(198, 26, 26, 0.1);
+    color: var(--primary-color);
+}
+
+.menu-item.active {
+    background-color: rgba(198, 26, 26, 0.1);
+    color: var(--primary-color);
+    border-left: 4px solid var(--primary-color);
+}
+
+.menu-item i {
+    margin-right: 12px;
+    font-size: 1rem;
+    width: 20px;
+    text-align: center;
+}
+
+/* Header Styles */
+.header {
+    height: var(--header-height);
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    box-shadow: var(--card-shadow);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.header-right {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile {
+    display: flex;
+    align-items: center;
+}
+
+.user-profile img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    margin-right: 10px;
+    object-fit: cover;
+}
+
+.user-info h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.user-info p {
+    font-size: 0.75rem;
+    color: var(--text-light);
+}
+
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    margin-right: 15px;
+}
+
+/* Responsive Styles for Sidebar and Header */
+@media (max-width: 992px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+    
+    .sidebar.active {
+        transform: translateX(0);
+    }
+    
+    .sidebar-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+    
+    .menu-toggle {
+        display: block !important;
+    }
+}
+
+@media (max-width: 576px) {
+    .header {
+        padding: 0 15px;
+    }
+    
+    .user-info {
+        display: none;
+    }
+    
+    .user-profile img {
+        margin-right: 0;
+    }
+}

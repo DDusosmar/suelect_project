@@ -81,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['email'] = $admin['email'];
                     $_SESSION['user_type'] = 'admin';
                     
-                    header("Location: Admin/admin_dash_test.php");
+                    header("Location: Admin/admin_dashboard.php");
                     exit();
                 } else {
                     $stmt_log = $suelect_conn->prepare("INSERT INTO AdminInlogpogingen (admin_id, username, succes) VALUES (?, ?, 0)");

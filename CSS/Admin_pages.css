@@ -1,0 +1,168 @@
+/* Admin Pages CSS */
+
+/* Container */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Heading */
+.container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Success and error messages */
+.success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+.error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+}
+
+/* Manage dropdown */
+#manageTypeForm {
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#manageTypeForm label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+#manageTypeForm select {
+    padding: 5px 10px;
+    font-size: 16px;
+}
+
+/* Buttons */
+button, input[type="submit"] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+button:hover, input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* CRUD Table */
+.crud-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.crud-table th, .crud-table td {
+    border: 1px solid #ddd;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.crud-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+.crud-table tr:nth-child(even) {
+    background-color: #fafafa;
+}
+
+.crud-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Popup Modal Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 999;
+    display: none;
+}
+
+/* Popup Modal */
+.popup-form {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 25px 30px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    z-index: 1000;
+    width: 400px;
+    max-width: 90%;
+    display: none;
+}
+
+/* Show popup */
+.popup-form.active,
+.popup-overlay.active {
+    display: block;
+}
+
+/* Form fields */
+.form-fields label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #333;
+}
+
+.form-fields input[type="text"],
+.form-fields input[type="email"],
+.form-fields input[type="password"],
+.form-fields input[type="date"],
+.form-fields select {
+    width: 100%;
+    padding: 8px 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Form buttons */
+.form-buttons {
+    text-align: right;
+}
+
+.form-buttons button {
+    margin-left: 10px;
+}
+
+/* Hide elements */
+.hidden {
+    display: none !important;
+}
