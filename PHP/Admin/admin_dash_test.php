@@ -1,5 +1,6 @@
 <?php
 // Start session if not already started
+global $suelect_conn;
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -93,17 +94,21 @@ try {
                 <i class="fas fa-tachometer-alt"></i>
                 <span>Dashboard</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="kandidaat_toevoegen.php" class="menu-item">
                 <i class="fas fa-user-tie"></i>
                 <span>Kanidaten</span>
             </a>
-            <a href="#" class="menu-item">
+            <a href="distrikt_beheren.php" class="menu-item">
                 <i class="fas fa-map-marker-alt"></i>
                 <span>Districten</span>
             </a>
             <a href="#" class="menu-item">
                 <i class="fas fa-users"></i>
                 <span>partijen</span>
+            </a>
+            <a href="ressort_beheer.php" class="menu-item">
+                <i class="fas fa-users"></i>
+                <span>Ressorten</span>
             </a>
             <a href="#" class="menu-item">
                 <i class="fas fa-users"></i>

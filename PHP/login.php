@@ -1,4 +1,5 @@
 <?php
+global $suelect_conn;
 session_start();
 
 include 'Includes/db.php';
@@ -13,21 +14,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $error_message = "Alle velden zijn verplicht.";
     } else {
         // gebruiker validatie
-        $stmt = $suelect_conn->prepare("SELECT gebruiker_id, voornaam, achternaam, id_nummer, wachtwoord, email, gestemd FROM Gebruiker WHERE email = ?");
+        $stmt = $suelect_conn->prepare("SELECT gebruiker_id, voornaam, achternaam, id_nummer, wachtwoord, email, gestemd FROM gebruiker WHERE email = ?");
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows === 1) {
             $gebruiker = $result->fetch_assoc();
             
             if (password_verify($wachtwoord, $gebruiker['wachtwoord'])) {
-                $stmt_update = $suelect_conn->prepare("UPDATE Gebruiker SET laatste_login = CURRENT_TIMESTAMP WHERE gebruiker_id = ?");
+                $stmt_update = $suelect_conn->prepare("UPDATE gebruiker SET laatste_login = CURRENT_TIMESTAMP WHERE gebruiker_id = ?");
                 $stmt_update->bind_param("i", $gebruiker['gebruiker_id']);
                 $stmt_update->execute();
                 $stmt_update->close();
                 
-                $stmt_log = $suelect_conn->prepare("INSERT INTO Inlogpogingen (gebruiker_id, succes) VALUES (?, 1)");
+                $stmt_log = $suelect_conn->prepare("INSERT INTO inlogpogingen (gebruiker_id, succes) VALUES (?, 1)");
                 $stmt_log->bind_param("i", $gebruiker['gebruiker_id']);
                 $stmt_log->execute();
                 $stmt_log->close();
@@ -40,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['gestemd'] = $gebruiker['gestemd'];
                 $_SESSION['user_type'] = 'gebruiker';
                 
-                header("Location: User/user_dash_test.php");
+                header("Location: /suelect_project/PHP/User/user_dash_test.php");
                 exit();
             } else {
-                $stmt_log = $suelect_conn->prepare("INSERT INTO Inlogpogingen (gebruiker_id, succes) VALUES (?, 0)");
+                $stmt_log = $suelect_conn->prepare("INSERT INTO inlogpogingen (gebruiker_id, succes) VALUES (?, 0)");
                 $stmt_log->bind_param("i", $gebruiker['gebruiker_id']);
                 $stmt_log->execute();
                 $stmt_log->close();
@@ -56,7 +57,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt->close();
             
              // Admin validatie
-            $stmt_admin = $suelect_conn->prepare("SELECT admin_id, username, volledige_naam, wachtwoord, email FROM Admin WHERE email = ?");
+            $stmt_admin = $suelect_conn->prepare("SELECT admin_id, username, volledige_naam, wachtwoord, email FROM admin WHERE email = ?");
             $stmt_admin->bind_param("s", $email);
             $stmt_admin->execute();
             $admin_result = $stmt_admin->get_result();
@@ -65,12 +66,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $admin = $admin_result->fetch_assoc();
                 
                 if (password_verify($wachtwoord, $admin['wachtwoord'])) {
-                    $stmt_update = $suelect_conn->prepare("UPDATE Admin SET laatste_login = CURRENT_TIMESTAMP WHERE admin_id = ?");
+                    $stmt_update = $suelect_conn->prepare("UPDATE admin SET laatste_login = CURRENT_TIMESTAMP WHERE admin_id = ?");
                     $stmt_update->bind_param("i", $admin['admin_id']);
                     $stmt_update->execute();
                     $stmt_update->close();
                     
-                    $stmt_log = $suelect_conn->prepare("INSERT INTO AdminInlogpogingen (admin_id, username, succes) VALUES (?, ?, 1)");
+                    $stmt_log = $suelect_conn->prepare("INSERT INTO admininlogpogingen (admin_id, username, succes) VALUES (?, ?, 1)");
                     $stmt_log->bind_param("is", $admin['admin_id'], $admin['username']);
                     $stmt_log->execute();
                     $stmt_log->close();
@@ -81,7 +82,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION['email'] = $admin['email'];
                     $_SESSION['user_type'] = 'admin';
                     
-                    header("Location: Admin/admin_dashboard.php");
+                    header("Location: /suelect_project/PHP/Admin/admin_dash_test.php");
                     exit();
                 } else {
                     $stmt_log = $suelect_conn->prepare("INSERT INTO AdminInlogpogingen (admin_id, username, succes) VALUES (?, ?, 0)");

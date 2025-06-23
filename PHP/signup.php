@@ -1,4 +1,5 @@
 <?php
+global $cbb_conn, $suelect_conn;
 session_start();
 include 'Includes/db.php';
 
